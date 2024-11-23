@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./../css/styles.css">
+    <title>Royal Fitness - Galería</title>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <a href="#" class="logo">Royal <span>Fitness</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="./../index.html">Inicio</a></li>
+            <li><a href="./galeria.html" class="active">Galería</a></li>
+            <li><a href="./presupuesto.html">Presupuesto</a></li>
+            <li><a href="./contacto.html">Contacto</a></li>
+        </ul>
+        <div class="top-btn">
+            <a href="#contact" class="nav-btn">Únete</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="gallery-section">
+            <h1>Galería de Gimnasio</h1>
+            <div class="gallery" id="gymGallery"></div>
+
+            <!-- Modal para ver la imagen en grande -->
+            <div id="imageModal" class="modal">
+                <span id="closeModal" class="close"></span>
+                <img id="modalImage" class="modal-content" src="#" alt="Imagen ampliada de la galería">
+                <div id="caption"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://x.com/" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+            <a href="https://www.facebook.com/" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+        </div>
+
+        <p class="copyright">
+            &copy; Royal Fitness 2024 - Todos los Derechos Reservados
+        </p>
+    </footer>
+
+    <script src="./../js/script.js"></script>
+</body>
+</html>
