@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Fitness - Contacto</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./../css/styles.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">Royal <span>Fitness</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="./../index.html">Inicio</a></li>
+            <li><a href="./galeria.html">Galería</a></li>
+            <li><a href="./presupuesto.html">Presupuesto</a></li>
+            <li><a href="./contacto.html" class="active">Contacto</a></li>
+        </ul>
+        
+        <div class="top-btn">
+            <a href="#contact" class="nav-btn">Únete</a>
+        </div>
+    </header>  
+
+    <main class="main-content">
+        <div class="contact-container">
+            <section class="contact-info">
+                <h2>Datos de Contacto</h2>
+                <p class="subtitle">Ubicación y Ruta hasta el negocio</p>
+                <div class="info-grid">
+                    <p><strong>Nombre de la Empresa:</strong> Royal Fitness</p>
+                    <p><strong>Dirección:</strong> Calle Ficticia 123, Ciudad, País</p>
+                    <p><strong>Teléfono:</strong> +123 456 789</p>
+                    <p><strong>Correo:</strong> contacto@minegocio.com</p>
+                </div>
+            </section>
+
+            <section class="map-section">
+                <h2>Ubicación</h2>
+                <div id="map"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://x.com/"><i class='bx bxl-twitter'></i></a>
+            <a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/"><i class='bx bxl-instagram'></i></a>
+        </div>
+
+        <p class="copyright">
+            &copy; Royal Fitness 2024 - Todos los Derechos Reservados
+        </p>
+    </footer>
+</body>
+</html>
+
+        <script>
+            function initMap() {
+                var map = L.map('map').setView([40.416775, -3.703790], 13);  // Ubicación de la empresa (Madrid)
+
+                // Cargar el mapa de OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                // Ubicación de la empresa (Madrid, por ejemplo)
+                var empresaLatLng = [40.416775, -3.703790];
+
+                // Marcar la ubicación de la empresa
+                var marker = L.marker(empresaLatLng).addTo(map);
+                marker.bindPopup("<b>Mi Negocio</b><br>Calle Ficticia 123, Ciudad, País").openPopup();
+
+                // Habilitar la geolocalización del usuario
+                map.locate({setView: true, maxZoom: 16});
+
+                map.on('locationfound', function(e) {
+                    var userLatLng = e.latlng;
+
+                    // Agregar un marcador para la ubicación del usuario
+                    L.marker(userLatLng).addTo(map)
+                        .bindPopup("<b>Tu ubicación</b>")
+                        .openPopup();
+
+                    // Calcular la ruta entre la empresa y el usuario
+                    L.Routing.control({
+                        waypoints: [
+                            L.latLng(userLatLng),
+                            L.latLng(empresaLatLng)
+                        ],
+                        routeWhileDragging: true
+                    }).addTo(map);
+                });
+
+                // Mostrar un mensaje si no se puede obtener la ubicación del usuario
+                map.on('locationerror', function() {
+                    alert("No se pudo obtener la ubicación del usuario.");
+                });
+            }
+
+            // Llamar a la función cuando se cargue la página
+            window.onload = initMap;
+        </script>
+      
+    
+</body>
+
+</html>
+
+   
